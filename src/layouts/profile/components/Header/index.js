@@ -41,12 +41,15 @@ import breakpoints from "assets/theme/base/breakpoints";
 // Images
 import burceMars from "assets/images/bruce-mars.jpg";
 import curved0 from "assets/images/curved-images/curved0.jpg";
-import { auth, updateProfile}from "../../../../FireBase";
+import {useSelector } from "react-redux";
 
 function Header() {
   const [tabsOrientation, setTabsOrientation] = useState("horizontal");
   const [tabValue, setTabValue] = useState(0);
-  const {displayName, email, emailVerified, photoURL } = auth.currentUser;
+  const currentUser = useSelector((state) => {
+    return(state.user.user);
+  });
+  const {displayName, photoUrl } = currentUser;
 
   useEffect(() => {
     // A function that sets the orientation state of the tabs.
@@ -105,7 +108,7 @@ function Header() {
         <Grid container spacing={3} alignItems="center">
           <Grid item>
             <SoftAvatar
-              src={photoURL}
+              src={photoUrl}
               alt="profile-image"
               variant="rounded"
               size="xl"

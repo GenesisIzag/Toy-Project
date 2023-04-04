@@ -37,7 +37,7 @@ const articleFilterSlice = createSlice({
 const userSlice = createSlice({
     name: 'user',
     initialState: {
-      user: userToken,
+      user: JSON.parse(userToken),
     },
     reducers: {
       login: (state, action) => {

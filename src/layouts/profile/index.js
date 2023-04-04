@@ -41,9 +41,14 @@ import profilesListData from "layouts/profile/data/profilesListData";
 
 // Images
 import { auth}from "../../FireBase";
+import {useSelector } from "react-redux";
 
 function Overview() {
-  const {displayName, email} = auth.currentUser;
+  const currentUser = useSelector((state) => {
+    return(state.user.user);
+  });
+  console.log(currentUser);
+  const {displayName, email } = currentUser;
   let info = {
     fullName: displayName,
     mobile: "(44) 123 1234 123",

@@ -47,14 +47,15 @@ function SignIn() {
     //setError(null);
     signInWithEmailAndPassword(auth, email, password)
       .then((userAuth) => {
-        const action = login({
+        const userData = {
           email: userAuth.user.email,
           uid: userAuth.user.uid,
           displayName: userAuth.user.displayName,
           photoUrl: userAuth.user.photoURL,
           accessToken: userAuth.user.accessToken,
-        });
-        localStorage.setItem("userToken", userAuth.user.accessToken);
+        }
+        const action = login(userData);
+        localStorage.setItem("userToken", JSON.stringify(userData));
         dispatch(action);
         navitage("/dashboard");
       })
