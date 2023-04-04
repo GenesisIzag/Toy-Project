@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import usePagination from "../../hooks/Pagination";
+import usePagination from "../../hooks/usePagination";
 import { useSelector, useDispatch } from "react-redux";
 import { addArticleFilter } from "../../store";
 import Grid from "@mui/material/Grid";
